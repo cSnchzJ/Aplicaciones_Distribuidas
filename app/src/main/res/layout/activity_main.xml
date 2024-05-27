@@ -1,0 +1,116 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/background_color">
+
+    <!-- Imagen de portada -->
+    <ImageView
+        android:id="@+id/coverImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/estacionamiento"
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true"/>
+
+    <!-- Etiqueta para correo electrónico -->
+    <TextView
+        android:id="@+id/emailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Correo electrónico"
+        android:textColor="@color/text_color"
+        android:layout_below="@id/coverImage"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Campo de texto para correo electrónico -->
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="correo electrónico"
+        android:inputType="textEmailAddress"
+        android:layout_below="@id/emailLabel"
+        android:background="@drawable/edit_text_background"
+        android:textColorHint="@color/hint_color"
+        android:textColor="@color/text_color"
+        android:padding="12dp"
+        android:elevation="2dp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Etiqueta para contraseña -->
+    <TextView
+        android:id="@+id/passwordLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contraseña"
+        android:textColor="@color/text_color"
+        android:layout_below="@id/email"/>
+
+    <!-- Campo de texto para contraseña -->
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="contraseña"
+        android:inputType="textPassword"
+        android:layout_below="@id/passwordLabel"
+        android:background="@drawable/edit_text_background"
+        android:textColorHint="@color/hint_color"
+        android:textColor="@color/text_color"
+        android:padding="12dp"
+        android:elevation="2dp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Botón de iniciar sesión -->
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Iniciar sesión"
+        android:textSize="24dp"
+        android:layout_below="@id/password"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/button_blue"
+        android:textColor="@color/text_color_button"/>
+
+    <!-- Enlace de olvido de contraseña -->
+    <TextView
+        android:id="@+id/forgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Olvidaste la contraseña?"
+        android:textSize="20dp"
+        android:textColor="@color/button_blue"
+        android:layout_below="@id/login"
+
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Botón de registro -->
+    <Button
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="REGÍSTRATE"
+        android:textSize="20dp"
+        android:layout_below="@id/forgotPassword"
+        android:backgroundTint="@color/button_blue"
+        android:textColor="@color/text_color_button"/>
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido al Estacionamiento"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/register"
+        android:textSize="34sp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"/>
+
+
+
+
+
+
+</RelativeLayout>

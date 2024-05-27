@@ -1,0 +1,175 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/background_color">
+
+    <TextView
+        android:id="@+id/registerTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGISTRO"
+        android:textColor="@color/button_blue"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentTop="true"/>
+
+    <!-- Correo electrónico -->
+    <TextView
+        android:id="@+id/emailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingresa tu correo electrónico"
+        android:textColor="@color/text_color"
+        android:layout_below="@id/registerTitle"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingresa tú correo institucional"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/edit_text_background"
+        android:textColorHint="@color/hint_color"
+        android:textColor="@color/text_color"
+        android:padding="12dp"
+        android:elevation="2dp"
+        android:layout_below="@id/emailLabel"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Número de celular -->
+    <TextView
+        android:id="@+id/phoneLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Número de celular"
+        android:textColor="@color/text_color"
+        android:layout_below="@id/email"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="55 30 66 89 77"
+        android:inputType="phone"
+        android:background="@drawable/edit_text_background"
+        android:textColorHint="@color/hint_color"
+        android:textColor="@color/text_color"
+        android:padding="12dp"
+        android:elevation="2dp"
+        android:layout_below="@id/phoneLabel"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Matrícula del vehículo -->
+    <TextView
+        android:id="@+id/vehicleRegistrationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Número de matrícula de vehículo"
+        android:textColor="@color/text_color"
+        android:layout_below="@id/phone"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/vehicleRegistration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="AAA - 000"
+        android:inputType="text"
+        android:background="@drawable/edit_text_background"
+        android:textColorHint="@color/hint_color"
+        android:textColor="@color/text_color"
+        android:padding="12dp"
+        android:elevation="2dp"
+        android:layout_below="@id/vehicleRegistrationLabel"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Institución -->
+    <!-- <TextView
+         android:id="@+id/institutionLabel"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Institución que perteneces"
+         android:textColor="@color/text_color"
+         android:layout_below="@id/vehicleRegistration"
+         android:layout_marginTop="16dp"/>
+
+     <EditText
+         android:id="@+id/institution"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:hint="Upiita"
+         android:inputType="text"
+         android:background="@drawable/edit_text_background"
+         android:textColorHint="@color/hint_color"
+         android:textColor="@color/text_color"
+         android:padding="12dp"
+         android:elevation="2dp"
+         android:layout_below="@id/institutionLabel"
+         android:layout_marginTop="8dp"/>-->
+
+    <!-- Contraseña -->
+    <TextView
+        android:id="@+id/passwordLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crea tu nueva contraseña"
+        android:textColor="@color/text_color"
+        android:layout_below="@id/vehicleRegistration"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="*************"
+        android:inputType="textPassword"
+        android:background="@drawable/edit_text_background"
+        android:textColorHint="@color/hint_color"
+        android:textColor="@color/text_color"
+        android:padding="12dp"
+        android:elevation="2dp"
+        android:layout_below="@id/passwordLabel"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Botones de usuario -->
+    <RadioGroup
+        android:id="@+id/userTypeGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:id="@+id/student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alumno"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/teacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Docente"/>
+
+
+    </RadioGroup>
+
+    <!-- Botón de finalizar registro -->
+    <Button
+        android:id="@+id/finishRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Finalizar registro"
+        android:layout_below="@id/userTypeGroup"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/button_blue"
+        android:textColor="@color/text_color"/>
+
+</RelativeLayout>
