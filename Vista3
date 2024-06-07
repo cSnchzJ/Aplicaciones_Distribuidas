@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+
+android:orientation="vertical"
+tools:context=".MainActivity">
+
+
+
+
+
+
+
+
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="63dp"
+    android:hint="Usuario"
+    android:inputType="text" />
+
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="81dp"
+    android:hint="Contraseña"
+    android:inputType="textPassword" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="66dp"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:text="Casilla A3 disponible " />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="66dp"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:text="Casilla A3 disponible " />
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="66dp"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:text="Casilla A3 disponible " />
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:src="@drawable/upiita"
+        />
+
+
+    <TextView
+        android:layout_width="210dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:text="Configuracion de la cuenta"
+        android:textSize="15sp" />
+    <TextView
+        android:layout_width="210dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:text="Salir de la app"
+        android:textSize="15sp" />
+
+
+</LinearLayout>
