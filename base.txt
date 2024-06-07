@@ -1,0 +1,51 @@
+CREATE SCHEMA db_appa DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+
+
+create TABLE usuario  (
+  id_usuario int(11) NOT NULL AUTO_INCREMENT,
+  nombre varchar(255) NOT NULL,
+  apellido varchar(255) NOT NULL,
+  edad int(11) NOT NULL,
+  edo_docencia binary(1),		#Si es docente puede tener algún tipo de preferencias.
+  correo varchar(255) NOT NULL,
+  contraseña varchar(255) NOT NULL,
+  #estado_de_cajon binary(1) NOT NULL DEFAULT 1,
+  sexo binary(1) not null,
+  fecha_creacion timestamp NOT NULL,
+  #fecha_modificacion timestamp NULL ON UPDATE CURRENT_TIMESTAMP,
+  placas varchar(15) not null,
+  modelo_vehículo varchar(15) not null,
+  institucion binary(1),
+  PRIMARY KEY(id_usuario),
+  #foreign key(estado_de_cajon) references cajones(id_cajon),
+  foreign key(edo_docencia) references docencia(edo_docencia)
+  );
+
+Create table cajones(
+	#id_usuario int NOT NULL,
+    id_cajon varchar(5) NOT NULL 
+);
+
+alter table cajones add index iid_cajon(id_cajon);
+create table docencia(
+	edo_docencia binary(1) NOT NULL DEFAULT 1	#Puede tener varios niveles de jerarquías y mas preferencias  docente-profesor-secretario-director, etc
+	#id_cajon varchar(5),	#lugar asignado
+    #foreign key(cajones) references cajones(id_cajon)
+);
+alter table docencia add index iedo_docencia(edo_docencia);
+create table registro(
+	 id_usuario int(11),
+     tiempo_estadia timestamp not null,
+     id_cajon varchar(5),
+     foreign key(id_usuario) references usuario(id_usuario),
+     foreign key(id_cajon) references cajones(id_cajon)
+);
+
+
+#Tabla temporal
+#	id_usuario
+#	nombre_usuario
+#	id_cajon
+#	tiempo_comienzo
+#	edo_cajon
+#	edo_docencia
