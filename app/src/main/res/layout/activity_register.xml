@@ -167,9 +167,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Finalizar registro"
+        android:textSize="20dp"
         android:layout_below="@id/userTypeGroup"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/button_blue"
-        android:textColor="@color/text_color"/>
+        android:textColor="@color/background_color"/>
 
 </RelativeLayout>

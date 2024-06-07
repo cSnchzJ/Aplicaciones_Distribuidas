@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "753150660788",
+    "project_id": "estacionamientoupiita",
+    "storage_bucket": "estacionamientoupiita.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:753150660788:android:70873e625fab84ceb787e1",
+        "android_client_info": {
+          "package_name": "com.upiita.estacionamiento"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAe4lGCooITucEW2W5eUxfrs7-U6ee4K8s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

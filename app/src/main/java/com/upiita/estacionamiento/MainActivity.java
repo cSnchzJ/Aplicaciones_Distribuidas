@@ -1,13 +1,20 @@
 package com.upiita.estacionamiento;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.content.Intent;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,10 +24,15 @@ public class MainActivity extends AppCompatActivity {
     private TextView forgotPasswordTextView;
     private Button registerButton;
 
+    private FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Inicializar Firebase Auth
+        firebaseAuth = FirebaseAuth.getInstance();
 
         // Inicialización de los componentes de la interfaz de usuario
         emailEditText = findViewById(R.id.email);
@@ -33,15 +45,31 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = emailEditText.getText().toString();
-                String password = passwordEditText.getText().toString();
-                // Aquí puedes agregar tu lógica de validación y autenticación
-                if(validarUsuario(email, password)) {
-                    Toast.makeText(MainActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
-                    // Continuar hacia la siguiente actividad o fragmento
-                } else {
-                    Toast.makeText(MainActivity.this, "Credenciales inválidas", Toast.LENGTH_SHORT).show();
+                String email = emailEditText.getText().toString().trim();
+                String password = passwordEditText.getText().toString().trim();
+
+                if (email.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Por favor ingrese email y contraseña", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
+                // Autenticación con Firebase
+                firebaseAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Inicio de sesión exitoso
+                                    Toast.makeText(MainActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    // Si el inicio de sesión falla
+                                    Toast.makeText(MainActivity.this, "Credenciales inválidas", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
         });
 
@@ -62,12 +90,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-    }
-
-    // Método para validar el usuario (simulación)
-    private boolean validarUsuario(String email, String password) {
-        // Esta es una simulación, aquí deberías implementar la lógica de validación real
-        return "usuario@example.com".equals(email) && "contraseña".equals(password);
     }
 }
