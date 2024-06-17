@@ -37,22 +37,33 @@ conMysql();
 function todos(tabla){
     return new Promise((resolve, reject) =>{
         conexion.query(`SELECT * FROM ${tabla}`, (error, result) =>{
-            if(error) return reject(error);
-            resolve(result);
+            return error ? reject(error) : resolve(result);
         })
     });
 }
 
 function uno(tabla, id){
-
+    return new Promise((resolve, reject) =>{
+        conexion.query(`SELECT * FROM ${tabla} WHERE id_usuario=${id}`, (error, result) =>{
+            return error ? reject(error) : resolve(result);
+        })
+    });
 }
 
 function agregar(tabla, data){
-
+    return new Promise((resolve, reject) =>{
+        conexion.query(`INSERT INTO ${tabla} SET ?`,data, (error, result) =>{
+            return error ? reject(error) : resolve(result);
+        })
+    });
 }
 
-function eliminar(tabla, id){
-
+function eliminar(tabla, data){
+    return new Promise((resolve, reject) =>{
+        conexion.query(`DELETE FROM ${tabla} WHERE id_usuario= ?`,data.id, (error, result) =>{
+            return error ? reject(error) : resolve(result);
+        })
+    });
 }
 
 module.exports = {
