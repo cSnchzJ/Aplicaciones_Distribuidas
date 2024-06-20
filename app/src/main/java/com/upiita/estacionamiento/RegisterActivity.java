@@ -1,5 +1,5 @@
 package com.upiita.estacionamiento;
-//
+//Registro de ususarios
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;

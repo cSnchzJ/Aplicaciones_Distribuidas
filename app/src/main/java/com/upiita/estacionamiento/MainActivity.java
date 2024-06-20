@@ -1,5 +1,5 @@
 package com.upiita.estacionamiento;
-//
+// programa principal
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
