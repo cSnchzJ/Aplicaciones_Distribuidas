@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Estacionamiento</string>
+    <string name="title_activity_modify_user">ModifyUserActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!--Manifest-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -16,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Estacionamiento"
         tools:targetApi="31">
+        <activity
+            android:name=".ModifyUserActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_modify_user"
+            android:theme="@style/Theme.Estacionamiento.Fullscreen" />
         <activity
             android:name=".UserProfileActivity"
             android:exported="false" />
