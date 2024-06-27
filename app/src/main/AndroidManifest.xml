@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Estacionamiento"
         tools:targetApi="31">
         <activity
+            android:name=".ParkingLotActivity"
+            android:exported="false" />
+        <activity
             android:name=".ModifyUserActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"

@@ -1,7 +1,9 @@
 package com.upiita.estacionamiento;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -18,6 +20,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class UserProfileActivity extends AppCompatActivity {
 
@@ -54,11 +58,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
         // Load user data
         loadUserEmail();
-
-        // Set listeners for buttons
-        slotA3.setOnClickListener(v -> showToast("Casilla A3 seleccionada"));
-        slot6c.setOnClickListener(v -> showToast("Casilla 6c seleccionada"));
-        slotL8.setOnClickListener(v -> showToast("Casilla L8 seleccionada"));
+        loadAvailableSlots();
 
         accountSettings.setOnClickListener(v -> toggleUserDetailsVisibility());
         logout.setOnClickListener(v -> {
@@ -114,6 +114,67 @@ public class UserProfileActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void loadAvailableSlots() {
+        firestore.collection("parkingSlots").whereEqualTo("occupied", false).limit(3).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            int availableSlotCount = 0;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                String slotId = document.getId();
+                                availableSlotCount++;
+                                if (availableSlotCount == 1) {
+                                    slotA3.setText(slotId);
+                                    slotA3.setVisibility(View.VISIBLE);
+                                    slotA3.setOnClickListener(v -> selectParkingSlot(slotA3));
+                                } else if (availableSlotCount == 2) {
+                                    slot6c.setText(slotId);
+                                    slot6c.setVisibility(View.VISIBLE);
+                                    slot6c.setOnClickListener(v -> selectParkingSlot(slot6c));
+                                } else if (availableSlotCount == 3) {
+                                    slotL8.setText(slotId);
+                                    slotL8.setVisibility(View.VISIBLE);
+                                    slotL8.setOnClickListener(v -> selectParkingSlot(slotL8));
+                                }
+                            }
+                            // Hide any remaining slots that are not available
+                            if (availableSlotCount < 3) {
+                                if (availableSlotCount < 1) {
+                                    slotA3.setVisibility(View.GONE);
+                                }
+                                if (availableSlotCount < 2) {
+                                    slot6c.setVisibility(View.GONE);
+                                }
+                                if (availableSlotCount < 3) {
+                                    slotL8.setVisibility(View.GONE);
+                                }
+                            }
+                        } else {
+                            Toast.makeText(UserProfileActivity.this, "Error fetching slots: " + task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    private void selectParkingSlot(Button slotButton) {
+        String slotId = slotButton.getText().toString();
+        slotButton.setBackgroundColor(Color.YELLOW);
+        new Handler().postDelayed(() -> slotButton.setBackgroundColor(Color.RED), 180000); // 3 minutes in milliseconds
+        showToast("Has seleccionado la casilla " + slotId);
+
+        // Update Firestore
+        firestore.collection("parkingSlots").document(slotId)
+                .update("occupied", true)
+                .addOnSuccessListener(aVoid -> showToast("Casilla actualizada"))
+                .addOnFailureListener(e -> showToast("Error al actualizar la casilla"));
+
+        // Pass selected slot information to ParkingLotActivity
+        Intent intent = new Intent(UserProfileActivity.this, ParkingLotActivity.class);
+        intent.putExtra("selectedSlot", slotId);
+        startActivity(intent);
     }
 
     private void showToast(String message) {
