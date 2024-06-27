@@ -5,15 +5,15 @@ const controlador = require('./index');
 
 const router = express.Router();
 
+router.post('/', agregar);
 
-router.get('/login',login);
-async function login (req, res, next){
+async function agregar (req, res, next){
     try{
-        const token = await controlador.login(req.body.usuario, req.body.password);
-        respuesta.success(req, res, token, 200);
+        const items = await controlador.agregar(req.body);
+        mensaje = 'Agregado con exito';
+        respuesta.success(req, res, mensaje, 201);
     }catch(err){
         next(err);
-    }
-}
-
+    }    
+};
 module.exports = router;

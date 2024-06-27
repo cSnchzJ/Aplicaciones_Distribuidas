@@ -5,6 +5,7 @@ const clientes = require('./modulos/clientes/rutas');
 const cajones = require("./modulos/cajones/rutas");
 const auth = require('./modulos/auth/rutas');
 const error = require('./red/errors');
+const admin = require('./modulos/admin/rutas');
 const app = express();
 
 //middleware
@@ -18,6 +19,7 @@ app.set('port', config.app.port);
 app.use('/api/clientes', clientes);
 app.use('/api/cajones', cajones);
 app.use('/api/auth', auth);
+app.use('/api/admin', admin);
 app.use(error);
 
 module.exports = app;
