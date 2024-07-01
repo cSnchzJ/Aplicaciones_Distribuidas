@@ -1,0 +1,92 @@
+
+body {
+    background-color: lightblue;
+    background-image: url("image.png");
+    background-repeat: repeat-x;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+  }
+  main {
+    background-color: rgb(235, 240, 235);
+    width:max-content;
+    border-radius: 10px;
+    padding: 50px;
+    text-align: center;
+    margin: auto;
+    margin-top: 10%;
+  }
+  #menu {
+    background-color: rgb(235, 240, 235);
+    border-radius: 10px;
+    padding: 40px;
+    padding-bottom: 10%;
+    margin: 1%;
+    margin-top: 10%;
+    
+  }
+  #salir_1 {
+    text-align: right;
+    margin-top: 5%;
+    color: red;
+    padding-left: 90%;
+  }
+  #Ver_menu{
+    padding-left: 40%;
+    color: rgb(81, 77, 70);
+  }
+  #botonEspacios {
+
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+   padding-left: 50px;
+   padding-right: 60px;
+    margin-left: 40%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  #botonListaUsuarios {
+
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 40%;
+  }
+  #listaUsuarios{
+    background-color: rgb(235, 240, 235);
+    border-radius: 10px;
+    padding: 40px;
+    padding-bottom: 10%;
+    margin: 1%;
+    margin-top: 10%;
+  }
+  #h1usuarios{
+    text-align: center;
+  }
+  #botonUsuario {
+
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: right;
+    text-decoration: none;
+    
+    margin-left: 85%;
+  }
+  #seccionUsuario {
+
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-bottom: 5%;
+    
+    
+  }
