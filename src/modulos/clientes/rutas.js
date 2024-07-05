@@ -4,6 +4,9 @@ const controlador = require('./index');
 
 
 const router = express.Router();
+const cors =require("cors");
+const { app } = require('../../config');
+router.use(cors());
 
 router.get('/', todos);
 router.get('/:id', uno);
