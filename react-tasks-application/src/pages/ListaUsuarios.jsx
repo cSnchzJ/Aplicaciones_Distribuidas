@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { datosUsuario } from '../tasksDatosUsuario'
 import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { json } from 'react-router-dom';
 
 const MyModal = ({ show, handleClose,datoUsuario}) => (
   <Modal show={show} onHide={handleClose}>
@@ -30,7 +31,7 @@ const MyModal = ({ show, handleClose,datoUsuario}) => (
 function ListaUsuarios(props) {
   //const datos = JSON.parse(clientes);
   console.log(props);
-  console.log(props.clientes.body);
+  console.log(props.clientes);
   //console.log(props.datosUsuario);
 
   const [show, setShow] = useState(false);
@@ -46,7 +47,7 @@ function ListaUsuarios(props) {
     <div id='listaUsuarios'>
         <h1 id='h1usuarios'>Usuarios</h1>
         <div >{
-        props.clientes.body.map((datoUsuario) => (<div id='seccionUsuario' class="row" key={datoUsuario.id}>
+        props.clientes.map((datoUsuario) => (<div id='seccionUsuario' class="row" key={datoUsuario.id}>
 
                 <div class="col-sm-8">
 
