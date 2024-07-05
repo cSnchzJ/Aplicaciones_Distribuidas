@@ -6,17 +6,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const MyModal = ({ show, handleClose,datoUsuario}) => (
   <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-          <Modal.Title><p>{datoUsuario?.tipo_usuario}</p></Modal.Title>
+          <Modal.Title><p>{datoUsuario?.correo}</p></Modal.Title>
       </Modal.Header>
       <Modal.Body>
-          <p>id: {datoUsuario?.id}</p>
-          <p>tipo_usuario:{datoUsuario?.tipo_usuario}</p>
-          <p>correo:{datoUsuario?.correo}</p>
-          
+          <p>activo: {datoUsuario?.activo}</p>
           <p>fecha_creacion:{datoUsuario?.fecha_creacion}</p>
+          <p>id:{datoUsuario?.id}</p>
+          
+          <p>password:{datoUsuario?.password}</p>
           <p>placas:{datoUsuario?.placas}</p>
           <p>telefono:{datoUsuario?.telefono}</p>
-          <p>Activo:{datoUsuario?.activo}</p>
+          <p>tipo_usuario:{datoUsuario?.tipo_usuario}</p>
           
       </Modal.Body>
       <Modal.Footer>
@@ -28,7 +28,10 @@ const MyModal = ({ show, handleClose,datoUsuario}) => (
 );
 
 function ListaUsuarios(props) {
+  //const datos = JSON.parse(clientes);
   console.log(props);
+  console.log(props.clientes.body);
+  //console.log(props.datosUsuario);
 
   const [show, setShow] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -43,12 +46,12 @@ function ListaUsuarios(props) {
     <div id='listaUsuarios'>
         <h1 id='h1usuarios'>Usuarios</h1>
         <div >{
-        props.datosUsuario.map((datoUsuario) => (<div id='seccionUsuario' class="row" key={datoUsuario.id}>
+        props.clientes.body.map((datoUsuario) => (<div id='seccionUsuario' class="row" key={datoUsuario.id}>
 
                 <div class="col-sm-8">
 
                 <Button variant="info" size="lg" onClick={() => handleShow(datoUsuario)}>
-                  <h1>{datoUsuario.tipo_usuario}</h1>
+                  <h1>{datoUsuario.correo}</h1>
                 </Button>
                   
                 </div>
